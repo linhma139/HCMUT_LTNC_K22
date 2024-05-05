@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi" xmlnd="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DElIU Lavender</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/css/dichuyen.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/js/pages/dichuyen.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+<!-- ---------------------------------------header------------------------------------------------- -->
+    <header>
+        <div class="logo"> 
+            <img width="200"  src="/image/logo4.png" onclick="logo()"/>
+        </div>
+        <div class="menu">
+            <li><a href="/user">TRANG CHỦ</a>
+        </li>
+            <li><a href="/user/giaohang">GIAO HÀNG</a>
+            </li>
+            <li><a href="/user/dichuyen">DI CHUYỂN</a></li>
+            <li><a href="/user/order">ĐƠN HÀNG</a></li>
+        </div>
+        <div class="others">
+            <li><input type="text" placeholder="  Tìm kiếm"><i class="fa fa-search"></i></li>
+            <li><a class='bx bxs-shopping-bag-alt' href=""></a></li>
+            <li><a class="fa fa-user" href=""></a></li>
+        </div>
+    </header>
+<!-- ---------------------------------------header------------------------------------------------- -->
+
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+<section id="SlideFr">
+    <div class="aspect-ratio-169">
+        <img src="/image/ad3.jpg"/>
+    </div>
+</section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+
+    <section class="donhang">
+        <div class="contai">
+            <div class="donhang-top-wrap">
+                <div class="donhang-top">
+                    <div class="donhang-top-book donhang-top-item">
+                        <i class='bx bx-archive-in ' ></i>
+                    </div>
+                    <div class="donhang-top-process donhang-top-item">
+                        <i class='bx bxs-hourglass-top ' ></i>
+                    </div>
+                    <div class="donhang-top-accept donhang-top-item">
+                        <i class='bx bxs-package '></i>
+                    </div>
+                    <div class="donhang-top-go donhang-top-item">
+                        <i class='bx bxs-map-alt'></i>
+                    </div>
+                    <div class="donhang-top-bank donhang-top-item">
+                        <i class='bx bxs-credit-card ' ></i>
+                    </div>
+                    <div class="donhang-top-done donhang-top-item">
+                        <i class='bx bx-check '></i>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="contai">
+                <div class="donhang-content-medium">
+                        <div class="donhang-content-right">
+                            <p>Vui lòng nhập đủ thông tin</p>
+                            <div class="donhang-content-right-input-bottom">
+                                <div class="select-cont">
+                                    <label for="sl1">Loại xe<span style="color: red;">*</span></label><br>
+                                    <select name='lang' onchange="changeColor(this)" id="sl1">
+                                        <option value="#000">None</option>
+                                        <option value="#F02F78">XE CONTAINER</option>
+                                        <option value="#8357F0">XE TẢI</option>
+                                        <option value="#565DF0">XE KHÁCH</option>
+                                    </select>
+                                </div>
+                           </div>
+                           <div class="donhang-content-right-input-bottom">
+                                <div class="select-cont">
+                                    <label for="sl2">Kích thước<span style="color: red;">*</span></label><br>
+                                    <select name='lang' onchange="changeColor(this)" id="sl2">
+                                        <option value="#000">None</option>
+                                        <option value="#F02F78">SMALL</option>
+                                        <option value="#8357F0">MEDIUM</option>
+                                        <option value="#565DF0">LARGE</option>
+                                    </select>
+                                </div>
+                            </div>
+                     </div>
+                </div>
+            </div>
+            <div class="contai">
+                <div class="donhang-content row">
+                    <div class="donhang-content-left">
+                           <br><p>Điểm bắt đầu</p>
+                           <div class="donhang-content-left-input-top row">
+                                    <div class="donhang-content-left-input-top-item">
+                                        <label for="Hovaten">Họ và tên <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-left-input-top-item">
+                                        <label for="">Điện thoại <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-left-input-top-item">
+                                        <label for="">Tỉnh/Thành Phố <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-left-input-top-item">
+                                        <label for="">Quận/Huyện<span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                           </div>
+                           <div class="donhang-content-left-input-bottom">
+                                    <label for="">Phường/Xã<span style="color: red;">*</span></label>
+                                    <input type="text">
+                           </div>
+                           <div class="donhang-content-left-input-bottom">
+                                <label for="">Địa chỉ<span style="color: red;">*</span></label>
+                                <input type="text">
+                            </div>
+                           <div class="donhang-content-left-button row">
+                                <a href="">Quay lại</a>
+                            </div>
+                    </div>
+                    <div class="donhang-content-right">
+                           <br><p>Điểm kết thúc</p>
+                           <div class="donhang-content-right-input-top row">
+                                    <div class="donhang-content-right-input-top-item">
+                                        <label for="Hovaten">Họ và tên <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-right-input-top-item">
+                                        <label for="">Điện thoại <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-right-input-top-item">
+                                        <label for="">Tỉnh/Thành Phố <span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="donhang-content-right-input-top-item">
+                                        <label for="">Quận/Huyện<span style="color: red;">*</span></label>
+                                        <input type="text">
+                                    </div>
+                           </div>
+                           <div class="donhang-content-right-input-bottom">
+                                    <label for="">Phường/Xã<span style="color: red;">*</span></label>
+                                    <input type="text">
+                           </div>
+                           <div class="donhang-content-right-input-bottom">
+                                <label for="">Địa chỉ<span style="color: red;">*</span></label>
+                                <input type="text">
+                            </div>
+                           <div class="donhang-content-right-button row">
+                                <button><p>ĐẶT ĐƠN</p></button>
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+<!-- ---------------------------------------contact------------------------------------------------- -->
+    <section class="contact-container">
+        <p>Xin chào mừng quý khách</p>
+        <p>Đến với chúng tôi, quý khách sẽ được trải nghiệm dịch vụ với chất lượng tuyệt vời nhất !</p>
+        <input type="text" placeholder="Nhập email của bạn...">
+
+    </section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+
+<!-- ---------------------------------------footer------------------------------------------------- -->
+
+<section class="fot">
+    <div class="footer-top">
+        <li><a href=""></a>Liên hệ</li>
+        <li><a href=""></a>Tuyển dụng</li>
+        <li><a href=""></a>Giới thiệu</li>
+        <li>
+            <a href="" class="fa fa-facebook" href=""></a>
+            <a href="" class="fa fa-twitter" href=""></a>
+            <a href="" class="fa fa-youtube" href=""></a>
+        </li>
+    </div>
+
+    <div class="footer-center">
+        <p>
+            Công ty trách nhiệm hữu hạn Lavender Project<br>
+            Địa chỉ đăng kí: Đường Tạ Quang Bửu, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh <br>
+            Tư vấn : <span>0934870910</span>
+        </p>
+    </div>
+
+    <div class="footer-bottom">
+        #LTNC Lavender Project
+    </div>
+</section>
+<!-- ---------------------------------------footer------------------------------------------------- -->
+  </body>
+
+<!-- ---------------------------------------Script------------------------------------------------- -->
+  <script>
+    //
+  </script>
+<!-- ---------------------------------------Script------------------------------------------------- -->
+</html>

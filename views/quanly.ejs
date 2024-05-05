@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi" xmlnd="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Admin Lavender</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/css/quanly.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/js/pages/quanly.js" defer></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        </script>
+         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+  <body>
+<!-- ---------------------------------------header------------------------------------------------- -->
+<header>
+    <div class="logo"> 
+        <img width="200"  src="/image/logo4.png" onclick="logo()"/>
+    </div>
+    <div class="menu">
+        <li><a href="/admin">TRANG CHỦ</a></li>
+        <li><a href="/admin/vehicles">LOẠI XE</a></li>
+        <li><a href="/admin/drivers">TÀI XẾ</a></li>
+        <li><a href="/admin/lichtrinh">LỊCH TRÌNH</a></li>
+        <li><a href="/admin/quanly">QUẢN LÝ</a></li>
+    </div>
+    <div class="others">
+        <li><input type="text" placeholder="  Tìm kiếm"><i class="fa fa-search"></i></li>
+        <li><a class="fa fa-bell" href=""></a></li>
+        <li><a class="fa fa-user" href=""></a></li>
+    </div>
+</header>
+<!-- ---------------------------------------header------------------------------------------------- -->
+
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+    <section id="SlideFr">
+        <div class="aspect-ratio-169">
+            <img src="/image/ad3.jpg"/>
+
+        </div>
+    </section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+    <section class="content">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-windows' ></i>
+                        <div>Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-user-pin' ></i>
+                        <div>User</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-user-circle' ></i>
+                        <div>Driver</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-car' ></i>
+                        <div>CarOK</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-car-mechanic' ></i>
+                        <div>CarFix</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-go-lang' ></i>
+                        <div>Road</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-cart' ></i>
+                        <div>Order</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-bar-chart-alt-2' ></i>
+                        <div>Analytics</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-credit-card' ></i>
+                        <div>Sales</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number"><%= totalUser %></div>
+                        <div class="card-name">User</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxs-user-pin' ></i>
+                    </div>
+                </div>
+            <!-- /_________________1________________/ -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number"><%= totalKmRan %></div>
+                        <div class="card-name">Tổng quãng đường (km)</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxl-go-lang' ></i>
+                    </div>
+                </div>
+            <!-- /________________2_________________/ -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number"><%= totalOrderThisYear %></div>
+                        <div class="card-name">Số đơn hàng</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxs-cart' ></i>
+                    </div>
+                </div>
+            <!-- /________________3_________________/ -->
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number"><%= totalFix  %></div>
+                        <div class="card-name">Xe đang bảo trì</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class='bx bxs-car-mechanic' ></i>
+                    </div>
+                </div>
+            <!-- /________________4_________________/ -->
+            </div>
+            
+            <div class="cards2">
+                <div class="card2">
+                    <div class="card-content">
+                        <div class="number2"><%= totalDriver  %></div>
+                        <div class="card-name2">Driver</div>
+                    </div>
+                    <div class="icon-box2">
+                        <i class='bx bxs-user-circle' ></i>
+                    </div>
+                </div>
+            <!-- /_________________5________________/ -->
+                <div class="card2">
+                    <div class="card-content">
+                        <div class="number2"><%= totalVehicle  %></div>
+                        <div class="card-name2">Tổng xe</div>
+                    </div>
+                    <div class="icon-box2">
+                        <i class='bx bxs-car' ></i>
+                    </div>
+                </div>
+            <!-- /________________6_________________/ -->
+                <div class="card2">
+                    <div class="card-content">
+                        <div class="number2"><%= totalGrossThisYear.reduce((acc, curr) => acc + curr, 0)  %></div>
+                        <div class="card-name2">Doanh Thu</div>
+                    </div>
+                    <div class="icon-box2">
+                        <i class='bx bxs-credit-card' ></i>
+                    </div>
+                </div>
+            <!-- /________________7_________________/ -->
+    
+            </div>
+            <div class="charts">
+                <div class="chart" >
+                    <h2>Doanh thu (12 tháng)</h2>
+                    <canvas id="lineChart2" width="200" height="100"></canvas>
+                <script>
+                    var ctx = document.getElementById('lineChart2').getContext('2d');
+                    var lineChart2 = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Jan', 'Fre', 'Mar', 'Apr', 'May', 'Jun','Aug','Sep', 'Oct','Nov','Dec'],
+                            datasets: [{
+                                label: 'Doanh thu',
+                                data: [
+                                <%= totalGrossThisYear[0] %>,
+                                <%= totalGrossThisYear[1] %>,
+                                <%= totalGrossThisYear[2] %>,
+                                <%= totalGrossThisYear[3] %>,
+                                <%= totalGrossThisYear[4] %>,
+                                <%= totalGrossThisYear[5] %>,
+                                <%= totalGrossThisYear[6] %>,
+                                <%= totalGrossThisYear[7] %>,
+                                <%= totalGrossThisYear[8] %>,
+                                <%= totalGrossThisYear[9] %>,
+                                <%= totalGrossThisYear[10] %>,
+                                <%= totalGrossThisYear[11] %>,
+                                <%= totalGrossThisYear[12] %>
+                                ],
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 2,
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+                </div>
+                <div class="chart" id="doughnut-chart">
+                    <h2>Nhân viên</h2>
+                    <canvas id="myPieChart" width="400" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie', // Loại biểu đồ là pie (biểu đồ tròn)
+            data: {
+                labels: ['Đang có xe', 'Không có xe'], // Nhãn các phần của biểu đồ
+                datasets: [{
+                    label: '# of Votes',
+                    data:  [<%= totalDriverWithVehicle %> , <%=totalVehicle  - totalDriverWithVehicle %>]  , // Dữ liệu cho từng phần
+                    backgroundColor: [ // Màu nền cho từng phần của biểu đồ
+                        '#48e62599',
+                        '#fbff00c2',
+                        '#14d4ffc2'
+                        
+                    ],
+                    borderColor: [ // Màu viền cho từng phần của biểu đồ
+                        '#24c400c2',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)'
+                        
+            
+                    ],
+                    borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top', // Vị trí của chú thích
+                            },
+                            tooltip: {
+                                enabled: true // Hiển thị tooltip khi rê chuột vào các phần của biểu đồ
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+            </div>
+            
+        </div>
+        
+    </section>
+   
+    <section class="cart">
+        <div class="contai">
+            <h1 style="font-weight: bold; font-size: 30px; text-align: center; padding-bottom: 50px;">XE ĐANG CẦN BẢO DƯỠNG / SỬA CHỮA</h1>
+            <div class="cart-content row">
+                <div class="cart-content-left">
+                       <table>
+                        <tr>
+                            <th>Xe</th>
+                            <th>ID Xe</th>
+                            <th>Loại Xe</th>
+                            <th>Thời Gian Bảo Dưỡng/ Sửa Chữa </th>
+                            <th>Vấn đề</th>
+                            <th>Chi Phí Bảo Dưỡng/ Sửa Chữa</th>
+                            <th>Chi tiết</th>
+                            <th>Trạng Thái</th>
+                            <th>Xóa</th>
+                        </tr>
+                        <tr>
+                            <td><img src="/image/con1.jpg" alt=""></td>
+                            <td><p>XYZ_123456</p></td>
+                            <td><p>CONTAINER</p></td>
+                            <td style="font-weight: bold;"><p>Từ 0h30' 5/5/2024 </p><br>
+                                <p>đến 0h30' 8/5/2024</p>
+                            </td>
+                            <td><p>Máy lạnh của container bảo ôn bị hỏng, không thể điều chỉnh nhiệt độ như ý muốn.</p></td>
+                            <td><p>3,932 $ hay 150,000,000 <sup>đ</sup></p></td>
+                            <td><img src="/image/qr2.jpg" alt=""></td>
+                            <td><p>Đang sửa chữa</p></td>
+                            <td>
+                                <div class="dele">
+                                    <button>X</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="/image/con7.jpg" alt=""></td>
+                            <td><p>ABC_433456</p></td>
+                            <td><p>CONTAINER</p></td>
+                            <td style="font-weight: bold;"><p>Từ 0h30' 4/5/2024 </p><br>
+                                <p>đến 0h30' 6/5/2024</p>
+                            </td>
+                            <td><p>Thùng container bị móp méo do sử dụng lâu ngày hoặc do va chạm với các phương tiện khác, cần nắn chỉnh lại cho cân đối.</p></td>
+                            <td><p>5.898 $ hay 150,000,000 <sup>đ</sup></p></td>
+                            <td><img src="/image/qr2.jpg" alt=""></td>
+                            <td><p>Đang sửa chữa</p></td>
+                            <td>
+                                <div class="dele">
+                                    <button>X</button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                       </table> 
+                </div>
+<!-- ---------------------------------------contact------------------------------------------------- -->
+
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+
+<!-- ---------------------------------------footer------------------------------------------------- -->
+
+
+<!-- ---------------------------------------footer------------------------------------------------- -->
+  </body>
+
+<!-- ---------------------------------------Script------------------------------------------------- -->
+  <script>
+    //
+  </script>
+<!-- ---------------------------------------Script------------------------------------------------- -->
+</html>

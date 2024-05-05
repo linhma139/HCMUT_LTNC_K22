@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi" xmlnd="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Xe-item Admin Lavender</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/css/xeDr.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/js/pages/xeDr.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+<!-- ---------------------------------------header------------------------------------------------- -->
+<header>
+    <div class="logo"> 
+        <img width="200"  src="/image/logo4.png" onclick="logo()"/>
+    </div>
+    <div class="menu">
+        <li><a href="/admin">TRANG CHỦ</a></li>
+        <li><a href="/driver/vehicles">THÔNG TIN XE</a></li>
+        <li><a href="/driver/review">PROFILE TÀI XẾ</a></li>
+        <li><a href="/driver/schedule">LỊCH TRÌNH</a></li>
+    </div>
+    <div class="others">
+        <li><input type="text" placeholder="  Tìm kiếm"><i class="fa fa-search"></i></li>
+        <li><a class="fa fa-bell" href=""></a></li>
+        <li><a class="fa fa-user" href=""></a></li>
+    </div>
+</header>
+<!-- ---------------------------------------header------------------------------------------------- -->
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+<section id="SlideFr">
+    <div class="aspect-ratio-169">
+        <img src="/image/ad4.jpg"/>
+        <div class="find">
+            <from action="" id="search-box">
+                <input type="text" placeholder="  Tìm kiếm" id="search-text">
+                <button id="search-btn"><i class="fa fa-search"></i></button>
+            </from>
+        </div>
+
+    </div>
+</section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+<!-- ---------------------------------------New------------------------------------------------- -->
+    <section class="xeItem">
+        <div class="container">
+            <div class="xeItem-top row">
+                <p>TRANG CHỦ</p><span><i class='bx bxs-right-arrow'></i></span><p>THÔNG TIN XE</p>
+            </div>
+            <div class="xeItem-content row">
+                <div class="xeItem-content-left">
+                    <div class="xeItem-content-left-Big ">
+                        <img src="/image/car3.jpg" alt="">
+                    </div>
+                    <div class="xeItem-content-left-Small">
+                        <img src="/image/car3.jpg" alt="">
+                        <img src="/image/car2.jpg" alt="">
+                        <img src="/image/f6.jpg" alt="">
+                        <img src="/image/f1.jpg" alt="">
+                        <!-- <img src="/image/p2.jpg" alt=""> -->
+                    </div>
+                </div>
+                <!-- ......................... -->
+                <div class="xeItem-content-right">
+                    <div class="xeItem-content-right-name">
+                        <h1>XYZ_123456</h1>
+                    </div>
+                    <div class="xeItem-content-right-driver">
+                        <h1><i class='bx bxs-user-circle' ></i> Tài xế phụ trách: </h1>
+                        <p>Đinh Công Tường</p>
+                    </div>
+                    <div class="xeItem-content-right-CCCD">
+                        <h1><i class='bx bxs-id-card' ></i> CCCD/CMND: </h1>
+                        <p>0522060598945</p>
+                    </div>
+                    <div class="xeItem-content-right-num">
+                        <h1><i class='bx bxs-car'></i> Loại xe: </h1>
+                        <p>Container</p>
+                    </div>
+                    <div class="xeItem-content-right-num">
+                        <h1><i class='bx bxs-car'></i> Biển số xe: </h1>
+                        <p>XYZ_123456</p>
+                    </div>
+                    <div class="xeItem-content-right-num">
+                        <h1><i class='bx bxs-car'></i> Ngày xuất xưởng: </h1>
+                        <p>12/04/2022</p>
+                    </div>
+                    <div class="xeItem-content-right-status">
+                        <h1><i class='bx bx-station' ></i> Tình trạng xe: </h1>
+                        <p>Đang hoạt động</p>
+                    </div>
+                    <div class="xeItem-content-right-icon">
+                        <h1><i class='bx bx-car' ></i> Kích thước: </h1>
+                        <p>Small</p>
+                    </div>
+                    <div class="xeItem-content-right-icon">
+                        <h1><i class='bx bx-car' ></i> Nhiên liệu: </h1>
+                        <p>Diesel</p>
+                    </div>
+                    <div class="xeItem-content-right-icon">
+                        <h1><i class='bx bx-envelope' ></i> Mail: </h1>
+                        <p>DriverLavenderProject@gmail.com</p>
+                    </div>
+                    <div class="xeItem-content-right-qr">
+                        <h1><i class='bx bxs-credit-card' ></i> Chi tiết:</h1>
+                        <img src="/image/qr2.jpg" alt="">
+                    </div>
+                    <div class="xeItem-content-right-button">
+                        <button class="btn">BÁO CÁO HƯ HỎNG<i class='bx bxs-pencil'></i></button>
+                      
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+<!-- --------------------------------------New------------------------------------------------- -->
+    <!-- <section class="xeItem-related ">
+        <div class="xeItem-related-title">
+            <p>MỘT VÀI XE KHÁC</p>
+        </div>
+        <div class="xeItem-content row">
+            <div class="xeItem-related-item">
+                <img src="/image/g7.jpg" alt="">
+                <h1>Tài xế phụ trách:</h1>
+                <p>Nguyễn Văn Lượng</p><br>
+                <h1>Biển số xe: </h1>
+                <p>ABC_234022</p><br>
+                <h1>Tình trạng: </h1>
+                <p>Bình thường</p>
+            </div>
+            <div class="xeItem-related-item">
+                <img src="/image/tg3.jpg" alt="">
+                <h1>Tài xế phụ trách:</h1>
+                <p>Nguyễn Văn Lượng</p><br>
+                <h1>Biển số xe: </h1>
+                <p>ABC_234022</p><br>
+                <h1>Tình trạng: </h1>
+                <p>Bình thường</p>
+            </div>
+            <div class="xeItem-related-item">
+                <img src="/image/g4.jpg" alt="">
+                <h1>Tài xế phụ trách:</h1>
+                <p>Nguyễn Văn Lượng</p><br>
+                <h1>Biển số xe: </h1>
+                <p>ABC_234022</p><br>
+                <h1>Tình trạng: </h1>
+                <p>Bình thường</p>
+            </div>
+            <div class="xeItem-related-item">
+                <img src="/image/g5.jpg" alt="">
+                <h1>Tài xế phụ trách:</h1>
+                <p>Nguyễn Văn Lượng</p><br>
+                <h1>Biển số xe: </h1>
+                <p>ABC_234022</p><br>
+                <h1>Tình trạng: </h1>
+                <p>Bình thường</p>
+            </div>
+            <div class="xeItem-related-item">
+                <img src="/image/g6.jpg" alt="">
+                <h1>Tài xế phụ trách:</h1>
+                <p>Nguyễn Văn Lượng</p><br>
+                <h1>Biển số xe: </h1>
+                <p>ABC_234022</p><br>
+                <h1>Tình trạng: </h1>
+                <p>Bình thường</p>
+            </div>
+        </div>
+    </section> -->
+<!-- ---------------------------------------contact------------------------------------------------- -->
+    <section class="contact-container">
+        <p>Xin chào mừng quý khách</p>
+        <p>Đến với chúng tôi, quý khách sẽ được trải nghiệm dịch vụ với chất lượng tuyệt vời nhất</p>
+        <input type="text" placeholder="Nhập email của bạn...">
+
+    </section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+
+<!-- ---------------------------------------footer------------------------------------------------- -->
+
+<section class="fot">
+    <div class="footer-top">
+        <li><a href=""></a>Liên hệ</li>
+        <li><a href=""></a>Tuyển dụng</li>
+        <li><a href=""></a>Giới thiệu</li>
+        <li>
+            <a href="" class="fa fa-facebook" href=""></a>
+            <a href="" class="fa fa-twitter" href=""></a>
+            <a href="" class="fa fa-youtube" href=""></a>
+        </li>
+    </div>
+
+    <div class="footer-center">
+        <p>
+            Công ty trách nhiệm hữu hạn Lavender Project<br>
+            Địa chỉ đăng kí: Đường Tạ Quang Bửu, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh <br>
+            Tư vấn : <span>0934870910</span>
+        </p>
+    </div>
+
+    <div class="footer-bottom">
+        #LTNC Lavender Project
+    </div>
+</section>
+<!-- ---------------------------------------footer------------------------------------------------- -->
+  </body>
+
+<!-- ---------------------------------------Script------------------------------------------------- -->
+  <script>
+    //
+  </script>
+<!-- ---------------------------------------Script------------------------------------------------- -->
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi" xmlnd="https://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ADD CAR</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/css/addxe.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/js/pages/addxe.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  
+  </head>
+
+  <body>
+      <div class="wrapper">
+        <!-- <div id="error"></div> -->
+        <form action="/admin/vehicles" method="POST">
+        <!-- <form action=""> -->
+          <h1>ADD CAR</h1>
+          <div class="input-box">
+            <div class="ca1">
+                <input id="ID" type="text" placeholder="ID" required>
+                <i id="sa" class='bx bxs-user'></i>
+                <input id="name" type="text" placeholder="Tên tài xế " required>
+                <i id="sa2" class='bx bxs-user-circle'></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <div class="ca2">
+                <input id="CCCD" type="text" placeholder="CCCD/CMND" required>
+                <i id="sa3" class='bx bxs-user-circle'></i>
+                <input id="phone" type="text" placeholder="Số điện thoại" required>
+                <i id="sa4" class='bx bxs-phone'></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <div class="ca2">
+                <input id="Email" type="email" placeholder="Email" required>
+                <i id="sa2"class='bx bxl-gmail' ></i>
+            </div>
+          </div>
+          <div class="input-box2">
+            <label for="sl1" >Loại xe</label><br>
+            <select name='lang' onchange="changeColor(this)" id="sl1">
+                <option value="#000">None</option>
+                <option value="#F02F78">XE CONTAINER</option>
+                <option value="#8357F0">XE TẢI</option>
+                <option value="#565DF0">XE KHÁCH</option>
+            </select>
+            <label for="sl2" >Trạng thái</label><br>
+            <select name='lang' onchange="changeColor(this)" id="sl2">
+                <option value="">None</option>
+                <option value="#1ad336">Đang hoạt động</option>
+                <option value="orange">Đang bảo dưỡng</option>
+                <option value="#eb1644">Không hoạt động</option>
+            </select>
+        
+          </div>
+          <div class="input-box3">
+            <label id="ge" for="NL" >Nhiên liệu</label><br>
+            <label id="ge3" for="Gas" >Gasoline</label>
+            <input type="radio" id="Gas" name="NL" required>
+            <label id="ge4"for="Ele" >Electricity</label>
+            <input type="radio" id="Ele" name="NL" required>
+            <label id="ge4"for="Die" >Diesel</label>
+            <input type="radio" id="Die" name="NL" required>
+          </div>
+          <div class="input-box">
+            <div class="ca2">
+                <input id="LSLX" type="text" placeholder="Kích thước" required>
+                <i id="sa2" class='bx bxs-car'></i>
+            </div>
+          </div>
+          <div class="upload2">
+            <div class="up2">
+              <label id=""for="Bank" >Upload Detail Car</label>
+                <input id="Bank" type="file" accept="image/jpg, image/jpeg, image/png" placeholder="Bank" required>
+    
+            </div>
+          </div>
+          <div class="bank">
+            <img id="img2" src="/image/gp3.jpg">
+          </div>
+          <div class="RS">
+            <button type="reset" class="btn2">Reset</button>
+            <!-- <input type="button" onclick="checkPassword()" class=" btn" value="Submit" /> -->
+            <button type="submit" class="btn" >Submit</button>
+          </div>
+        
+                      <!-- <div class="RS">
+                        <button type="reset" class="btn2">Reset</button>
+                        <button type="submit" class="btn" onclick="checkPassword">Submit</button>
+                      
+                      </div> -->
+                      <!-- <button type="submit" class="btn">Submit
+                        <a href="login.html" target="_self">Submit</a> -->
+                        <!-- <a href="" >Submit</a> -->
+                      <!-- </button> --> 
+        </form>
+      </div>
+      <script>
+        let bankImg=document.getElementById("img2");
+        let inputImg2=document.getElementById("Bank");
+        inputImg2.onchange = function(){
+            bankImg.src =URL.createObjectURL(inputImg2.files[0]);
+        }
+      </script>
+  </body>
+<!-- ---------------------------------------footer------------------------------------------------- -->
+
+</html>

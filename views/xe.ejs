@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi" xmlnd="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Car_Admin Lavender</title>
+
+    <!-- The website stylesheet -->
+    <link rel="stylesheet" href="/css/xe.css" />
+
+    <!-- The website JavaScript file -->
+    <script src="/js/pages/xe.js" defer></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+<!-- ---------------------------------------header------------------------------------------------- -->
+<header>
+    <div class="logo"> 
+        <img width="200"  src="/image/logo4.png" onclick="logo()"/>
+    </div>
+    <div class="menu">
+        <li><a href="/admin">TRANG CHỦ</a></li>
+        <li><a href="/admin/vehicles">LOẠI XE</a></li>
+        <li><a href="/admin/drivers">TÀI XẾ</a></li>
+        <li><a href="/admin/lichtrinh">LỊCH TRÌNH</a></li>
+        <li><a href="/admin/quanly">QUẢN LÝ</a></li>
+    </div>
+    <div class="others">
+        <li><input type="text" placeholder="  Tìm kiếm"><i class="fa fa-search"></i></li>
+        <li><a class="fa fa-bell" href=""></a></li>
+        <li><a class="fa fa-user" href=""></a></li>
+    </div>
+</header>
+<!-- ---------------------------------------header------------------------------------------------- -->
+
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+    <section id="SlideFr">
+        <div class="aspect-ratio-169">
+            <img src="/image/ad4.jpg"/>
+            <div class="find">
+                <from action="" id="search-box">
+                    <input type="text" placeholder="  Tìm kiếm" id="search-text">
+                    <button id="search-btn"><i class="fa fa-search"></i></button>
+                </from>
+            </div>
+
+        </div>
+    </section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+    <section class="xe">
+        <div class="container">
+            <div class="xe-top row">
+                <p>TRANG CHỦ</p><span><i class='bx bxs-right-arrow'></i></span><p>LOẠI XE</p><span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <form action="/admin/vehicles" method="GET" class="xe-left">
+                    <div>
+                        <ul>
+                            <li class="xe-left-li block"><a href="#">XE CONTAINER</a>
+                                <input type="radio" name="type" >
+                                <ul>
+                                    <li class="xe-left-li"><a href="">CONTAINER_20</a>
+                                        <input type="checkbox" name="code" ></li>
+                                    <li class="xe-left-li"><a href="">CONTAINER_40</a>
+                                        <input type="checkbox" name="code" ></li>
+                                </ul>
+                            </li>
+                            <li class="xe-left-li"><a href="#">XE TẢI</a>
+                                <input type="radio" name="code" >
+                                <ul>
+                                    <li class="xe-left-li"><a href="">SMALL</a>
+                                        <input type="checkbox" name="status"  value="Maintainance" >
+                                    </li>
+                                    <li class="xe-left-li"><a href="">MEDIUM</a>
+                                        <input type="checkbox" name="type" value="Electricity"></li>
+                                    <li class="xe-left-li"><a href="">LARGE</a>
+                                        <input type="checkbox" name="size" ></li>
+                                </ul>
+                            </li>
+                            <li class="xe-left-li"><a href="#">XE KHÁCH</a>
+                                <input type="radio" name="code" >
+                                <ul>
+                                    <div class="input-box">
+                                        <input id="NameDR" name="bags" type="text" placeholder="Số Hành Lí" >
+                                    </div>
+                                    <div class="input-box">
+                                        <input id="NameDR" name="seats" type="text" placeholder="Số Ghế" >
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="xe-left-li"><a href="#">TÀI XẾ</a>
+                                <ul>
+                                    <div class="input-box">
+                                        <input id="NameDR" name="name" type="text" placeholder="Tên tài xế " >
+                                    </div>
+                    
+                                </ul>
+                            </li>
+                            <li class="xe-left-li"><a href="#">BIỂN SỐ XE</a>
+                                <ul>
+                                    <div class="input-box">
+                                        <input id="IDCAR" name="numberPlate" type="text" placeholder="Biển số xe" >
+                                    </div>
+                    
+                                </ul>
+                            </li>
+                            <li class="xe-left-li"><a href="#">
+                                <button id="SEA">TÌM KIẾM</button>
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+                <div class="xe-right row">
+                    <div class="xe-right-top-item2">
+                        <a href="/admin" target="_self">
+                            <button id="but1"><span>Thêm</span><i class='bx bxs-message-square-x' ></i></button>
+                        </a>
+                    </div>
+                    <div class="xe-right-top-item2">
+                        <button><span>Xóa</span><i class='bx bxs-message-square-x' ></i></button>
+                    </div>
+                    
+                    <div class="xe-right-content row">
+                        <% data.forEach(function(item) { %>
+                        <div class="xe-right-content-item">
+                            <% if(item.type === 'Container') { %>
+                            <img src="/image/con7.jpg" alt="">
+                            <% } else if(item.type === 'Truck') { %>
+                            <img src="/image/car3.jpg" alt="">
+                            <% } else if(item.type === 'Car') { %>
+                            <img src="/image/car2.jpg" alt="">
+                            <% } %>
+                            <span ><%= item.type %></span>
+                            <h1>Tài xế phụ trách: <%= item.driver %> <br></h1>
+                            <h1>Biển số xe: <%= item.numberPlate %></h1>
+                            <p>Tình trạng: <%= item.status %></p>
+                        </div>
+                        
+                        <% }) %>
+                    </div>
+                    <div class="xe-right-bottom row">
+                        <div class="xe-right-bottom-item">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="?page=1">1</a>
+                                <a class="" href="?page=2">2</a>
+                                <a href="?page=3">3</a>
+                                <a href="?page=4">4</a>
+                                <a href="?page=5">5</a>
+                                <a href="?page=6">6</a>
+                                <a href="?page=">&raquo;</a>
+                              </div>
+                              
+                        </div>
+    
+    
+                    </div>
+
+
+                </div>
+            
+                
+
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- ---------------------------------------contact------------------------------------------------- -->
+    <section class="contact-container">
+        <p>Xin chào mừng quý khách</p>
+        <p>Đến với chúng tôi, quý khách sẽ được trải nghiệm dịch vụ với chất lượng tuyệt vời nhất</p>
+        <input type="text" placeholder="Nhập email của bạn...">
+
+    </section>
+<!-- ---------------------------------------Slide------------------------------------------------- -->
+
+<!-- ---------------------------------------footer------------------------------------------------- -->
+
+<section class="fot">
+    <div class="footer-top">
+        <li><a href=""></a>Liên hệ</li>
+        <li><a href=""></a>Tuyển dụng</li>
+        <li><a href=""></a>Giới thiệu</li>
+        <li>
+            <a href="" class="fa fa-facebook" href=""></a>
+            <a href="" class="fa fa-twitter" href=""></a>
+            <a href="" class="fa fa-youtube" href=""></a>
+        </li>
+    </div>
+
+    <div class="footer-center">
+        <p>
+            Công ty trách nhiệm hữu hạn Lavender Project<br>
+            Địa chỉ đăng kí: Đường Tạ Quang Bửu, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh <br>
+            Tư vấn : <span>0934870910</span>
+        </p>
+    </div>
+
+    <div class="footer-bottom">
+        #LTNC Lavender Project
+    </div>
+</section>
+<!-- ---------------------------------------footer------------------------------------------------- -->
+  </body>
+
+<!-- ---------------------------------------Script------------------------------------------------- -->
+  <script>
+    //
+  </script>
+<!-- ---------------------------------------Script------------------------------------------------- -->
+</html>
