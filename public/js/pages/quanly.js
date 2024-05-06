@@ -36,7 +36,7 @@ const header= document.querySelector("header")
     setInterval(imgSlide,3000)
     
     function logo() {
-        window.location.href="/pageAdmin/pageAdmin.ejs"
+        window.location.href="/"
     }
 
 

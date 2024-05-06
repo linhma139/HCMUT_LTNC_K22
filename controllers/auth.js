@@ -24,7 +24,7 @@ export const registerView = (req,res,next) => {
         return res.status(400).json({ success: false, status: 400, message: 'Already logged in'});
     }
     /* render view here */
-    res.render("register")
+    return res.render("register")
 };
 
 export const loginView = (req,res,next) => {
@@ -32,14 +32,14 @@ export const loginView = (req,res,next) => {
         return res.status(400).json({ success: false, status: 400, message: 'Already logged in'});
     }
     /* render view here */
-    res.render("login")
+    return res.render("login")
 };
 
 export const logoutView = (req,res,next) => {
     // if (req.session.user) {
     //     return res.status(400).json({ success: false, status: 400, message: 'Already logged in'});
     // }
-    res.render("logout")
+    return res.render("logout")
     /* render view here */
 };
 

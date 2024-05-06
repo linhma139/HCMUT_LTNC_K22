@@ -6,16 +6,18 @@ const router = express.Router();
 
 router.use(isLoggedIn);
 
-router.get('/order', userInterface.getOrderList);
+router.get('/order', userInterface.getOrderList); 
 
-router.post('/order', userInterface.putOrder);
+router.get('/order/new', userInterface.getNewOrder);
 
-router.get('/order/:_id', userInterface.getOrder);
+router.post('/order', userInterface.putOrder); 
+
+router.get('/order/:_id', userInterface.getOrder); // done
 
 router.post('/order/:_id', userInterface.updateOrder);
 
 router.get('/', (req, res) => {
-    res.render('index')
+    return res.render('index')
 });
 
 export default router;

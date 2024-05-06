@@ -16,7 +16,7 @@ router.post('/schedule', driverInterface.createSchedule);
 router.get('/review', driverInterface.getReviewList);
 
 router.get('/', (req, res) => {
-    res.render('driver')
+    return res.render('driver')
 });
 
 export default router;

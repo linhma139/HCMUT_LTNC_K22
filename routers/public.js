@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
             return res.redirect('/driver');
         }
     }
-    res.render('index');
+    return res.render('index');
 });
 
 

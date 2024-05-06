@@ -10,7 +10,7 @@ router.use(isLoggedIn);
 router.use(isAdmin);
 
 router.get('/', (req, res) => {
-    res.render('pageAdmin', { user: req.session.user });
+    return res.render('pageAdmin', { user: req.session.user });
 });
 
 // SEARCH OPERATIONS
@@ -27,13 +27,15 @@ router.get('/vehicles', adminInterface.getVehicleList); // done
 
 router.get('/drivers/:_id', adminInterface.getDriver); // done
 
-router.post('/drivers', adminInterface.registerDriver); 
+router.post('/driver/add', adminInterface.registerDriver); // done
 
-router.get('/driver/add', adminInterface.getDriverAdderView);
+router.get('/driver/add', adminInterface.getDriverAdderView); // done
 
-router.delete('/drivers/:_id', adminInterface.deleteDriver);
+router.post('/drivers/:_id/delete', adminInterface.deleteDriver); // done
 
-router.patch('/drivers/:_id', adminInterface.updateDriver);
+router.get('/drivers/:_id/update', adminInterface.getDriverUpdateView); // done
+
+router.post('/drivers/:_id/update', adminInterface.updateDriver); // done
 
 router.get('/drivers/:_id/review', adminInterface.getDriverReviewList); 
 
@@ -47,12 +49,14 @@ router.get('/orders/:_id', adminInterface.getOrder);
 
 router.get('/vehicles/:_id', adminInterface.getVehicle); // done
 
-router.post('/vehicles', adminInterface.registerVehicle); 
+router.post('/vehicle/add', adminInterface.registerVehicle); // done 
 
-router.get('/vehicle/add', adminInterface.getVehicleAdderView);
+router.get('/vehicle/add', adminInterface.getVehicleAdderView); // done
 
-router.delete('/vehicles/:_id', adminInterface.deleteVehicle); 
+router.post('/vehicles/:_id/delete', adminInterface.deleteVehicle); // done
 
-router.patch('/vehicles/:_id', adminInterface.updateVehicle);
+router.get('/vehicles/:_id/update', adminInterface.getVehicleUpdateView);
+
+router.post('/vehicles/:_id/update', adminInterface.updateVehicle); 
 
 export default router;

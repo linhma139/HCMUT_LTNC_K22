@@ -118,23 +118,26 @@
                 </form>
                 <div class="xe-right row">
                     <div class="xe-right-top-item2">
-                        <a href="/admin" target="_self">
+                        <a href="/admin/vehicle/add" target="_self">
                             <button id="but1"><span>Thêm</span><i class='bx bxs-message-square-x' ></i></button>
                         </a>
                     </div>
-                    <div class="xe-right-top-item2">
-                        <button><span>Xóa</span><i class='bx bxs-message-square-x' ></i></button>
-                    </div>
+                
                     
                     <div class="xe-right-content row">
                         <% data.forEach(function(item) { %>
                         <div class="xe-right-content-item">
                             <% if(item.type === 'Container') { %>
-                            <img src="/image/con7.jpg" alt="">
+                            <a href="/admin/vehicles/<%= item._id %>">
+                                <img src="/image/con7.jpg"  alt="Xe">
+                            </a>
                             <% } else if(item.type === 'Truck') { %>
-                            <img src="/image/car3.jpg" alt="">
+                            <a href="/admin/vehicles/<%= item._id %>">
+                                <img src="/image/car3.jpg"  alt="Xe">
+                            </a>
                             <% } else if(item.type === 'Car') { %>
-                            <img src="/image/car2.jpg" alt="">
+                            <a href="/admin/vehicles/<%= item._id %>">
+                                <img src="/image/car2.jpg"  alt="Xe">
                             <% } %>
                             <span ><%= item.type %></span>
                             <h1>Tài xế phụ trách: <%= item.driver %> <br></h1>

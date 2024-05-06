@@ -22,45 +22,16 @@
   <body>
       <div class="wrapper">
         <!-- <div id="error"></div> -->
-        <form action="/admin/driver/add" method="POST">
+        <form action="/admin/drivers/<%= data %>/update" method="POST">
         <!-- <form action=""> -->
-          <h1>ADD DRIVER</h1>
+          <h1>UPDATE DRIVER</h1>
           <div class="input-box">
             <div class="ca1">
-                <input id="ID" type="text" name="age" placeholder="Tuổi" required>
-                <i id="sa" class='bx bxs-user'></i>
-                <input id="name" type="text" name="name" placeholder="Tên tài xế " required>
+                <input id="name" type="text" name="numberPlate" placeholder="Biển số xe được giao " required>
                 <i id="sa2" class='bx bxs-user-circle'></i>
             </div>
           </div>
-          <div class="input-box2">
-            <label for="sl1" >Loại xe</label><br>
-            <select name='licenseType' onchange="changeColor(this)" id="sl1">
-                <option value="">None</option>
-                <option value="Container">XE CONTAINER</option>
-                <option value="Truck">XE TẢI</option>
-                <option value="Car">XE KHÁCH</option>
-            </select>
-        
-          </div>
-          <div class="input-box">
-            <div class="ca2">
-        
-                <input id="phone" type="text" name="phoneNumber" placeholder="Số điện thoại" required>
-                <i id="sa4" class='bx bxs-phone'></i>
-            </div>
-          </div>
          
-          <div class="input-box">
-            <div class="ca2">
-                <input id="Email" type="email" name="email" placeholder="Email" required>
-                <i id="sa2"class='bx bxl-gmail' ></i>
-            </div>
-          </div>
-       
-          
-      
-       
           <div class="RS">
             <button type="reset" class="btn2">Reset</button>
             <!-- <input type="button" onclick="checkPassword()" class=" btn" value="Submit" /> -->

@@ -17,5 +17,5 @@ itemslidebar.forEach(function(menu,index){
     })
 })
 function logo() {
-    window.location.href="/pageAdmin/pageAdmin.ejs"
+    window.location.href="/"
   }

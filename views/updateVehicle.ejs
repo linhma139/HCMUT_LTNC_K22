@@ -22,34 +22,22 @@
   <body>
       <div class="wrapper">
         <!-- <div id="error"></div> -->
-        <form action="/admin/vehicle/add" method="POST">
+        <form action="/admin/vehicles/<%= data %>/update" method="POST">
         <!-- <form action=""> -->
-          <h1>ADD CAR</h1>
+          <h1>UPDATE CAR</h1>
           <div class="input-box">
             <div class="ca1">
-                <input id="ID" type="text" name="currentLocation" placeholder="Địa điểm hiện tại" required>
+                <input id="ID" type="text" name="employeeID" placeholder="Mã số nhân viên" >
                 <i id="sa" class='bx bxs-user'></i>
                 <input id="name" type="text" name="numberPlate" placeholder="Biển số xe" required>
                 <i id="sa2" class='bx bxs-user-circle'></i>
             </div>
           </div>
-          <div class="input-box">
-            <div class="ca2">
-                <input id="CCCD" type="text" name="seats" placeholder="Chỗ ngồi" required>
-                <i id="sa3" class='bx bxs-user-circle'></i>
-                <input id="phone" type="text" name="bags" placeholder="Hành lí" required>
-                <i id="sa4" class='bx bxs-phone'></i>
-            </div>
-          </div>
+        
 
           <div class="input-box2">
-            <label for="sl1" >Loại xe</label><br>
-            <select name='type' onchange="changeColor(this)" id="sl1">
-                <option value="">None</option>
-                <option value="Container">XE CONTAINER</option>
-                <option value="Truck">XE TẢI</option>
-                <option value="Car">XE KHÁCH</option>
-            </select>
+        
+           
         
           </div>
           <div class="input-box3">
@@ -61,13 +49,7 @@
             <label id="ge4"for="Die" >Diesel</label>
             <input type="radio" id="Die" name="fuelType" value="Diesel" required>
           </div>
-          <div class="input-box">
-            <div class="ca2">
-                <input id="LSLX" type="text" placeholder="Kích thước" required>
-                <i id="sa2" class='bx bxs-car'></i>
-            </div>
-        
-          </div>
+         
           <div class="RS">
             <button type="reset" class="btn2">Reset</button>
             <!-- <input type="button" onclick="checkPassword()" class=" btn" value="Submit" /> -->

@@ -145,16 +145,27 @@ export const getOrder = async (req, res, next) => {
         req.params._id: required
     */
     if (!req.params._id) {
-        return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+        // return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+        return res.render('error', {status: 404, message: 'Order not found'});
     }
     
     try {
         const id = new mongoose.Types.ObjectId(req.params._id);
         const order = await models.Order.findById(id).exec();
         if (!order || order.customer != req.session.profile) {
-            return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+            return res.render('error', {status: 404, message: 'Order not found'});
         }
-        return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: order});
+        // return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: order});
+        const driver = (await models.Driver.findById(order.driver).exec()).name;
+        const vehicle = (await models.Vehicle.findById(order.vehicle).exec()).numberPlate;
+        let ord = order.toObject();
+        ord.driver = driver;
+        ord.vehicle = vehicle;
+
+        console.log(ord)
+
+        return res.render('donhangID', {data: ord});
     } catch (err) {
         next(err);
     }
@@ -214,3 +225,7 @@ export const updateOrder = async (req, res, next) => {
         next(err);
     }
 };
+
+export const getNewOrder = async (req, res, next) => {
+    return res.render('giaohang');
+}

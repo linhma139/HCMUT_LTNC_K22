@@ -27,5 +27,5 @@ function changeColor(e){
 }
 
 function logo() {
-    window.location.href="/pageAdmin/pageAdmin.ejs"
+    window.location.href="/"
 }

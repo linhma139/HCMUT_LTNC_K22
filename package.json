@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "develop": "nodemon app.js",
-    "gen": "cd ./helper && node gen.js"
+    "develop": "nodemon --env-file=.env app.js",
+    "gen": "cd ./helper && node --env-file=../.env gen.js"
   },
   "keywords": [],
   "author": "",

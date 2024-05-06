@@ -24,7 +24,8 @@ export const registerDriver = async (req,res,next) => {
 
     try {
         await models.Account.createAccount(req.body);
-        return res.status(201).json({ success: true, status: 201, message: 'SUCCESS: created driver account'});
+        return res.redirect('/admin/drivers');
+        //return res.status(201).json({ success: true, status: 201, message: 'SUCCESS: created driver account'});
     } 
     catch (err) {
         next(err);
@@ -43,7 +44,8 @@ export const deleteDriver = async (req,res,next) => {
         const driverAccount = await models.Account.findOne({profile: driverProfile?._id}).exec();
         if (driverProfile && driverAccount) {
             driverAccount.deleteAccount();
-            return res.status(200).json({ success: true, status: 200, message: 'Deleted driver account'});;
+            res.redirect('/admin/drivers');
+            //return res.status(200).json({ success: true, status: 200, message: 'Deleted driver account'});;
         }
         return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
     }
@@ -59,18 +61,23 @@ export const registerVehicle = async (req,res,next) => {
     */
 
     const listNumProperty = ['currentLocation'];
-    const listAllowedProperty = ['type', 'fuelType', 'numberPlate', 'spec'];
-    const listAllowedSpecProperty = ['seats','bags','size'];
+    const listAllowedProperty = ['type', 'fuelType', 'numberPlate', 'size', 'seats', 'bags'];
 
     reqUtil.filterProperties(listAllowedProperty, req.body);
-    reqUtil.filterProperties(listAllowedSpecProperty, req.body.spec);
     reqUtil.toNumProperties(listNumProperty, req.body);
+
+    req.body.spec = {
+        size: req.body.size,
+        seats: req.body.seats,
+        bags: req.body.bags
+    }
 
     try {
         const vehicleInfo = new mongoose.model(req.body.type)(req.body);
         const vehicle = await vehicleInfo.save();
         await vehicle.assignBestDriver();
-        return res.status(201).json({ success: true, status: 201, message: 'Registered vehicle', data: vehicle});
+        return res.redirect('/admin/vehicles');
+        // return res.status(201).json({ success: true, status: 201, message: 'Registered vehicle', data: vehicle});
     } 
     catch (err) {
         next(err);
@@ -88,9 +95,11 @@ export const deleteVehicle = async (req,res,next) => {
         const vehicle = await models.Vehicle.findById(id).exec();
         if (vehicle) {
             await vehicle.deleteVehicle();
-            return res.status(200).json({ success: true, status: 200, message: 'Successfully deleted'});
+            return res.redirect('/admin/vehicles');
+            //return res.status(200).json({ success: true, status: 200, message: 'Successfully deleted'});
         }
-        return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+        // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+        return res.render('error', {status: 404, message: 'Vehicle not found'});
     }
     catch (err) {
         next(err);
@@ -206,7 +215,7 @@ export const getDriverList = async (req,res,next) => {
         if (driverList.length === 0) {
             return res.status(404).json({ success: false, status: 404, message: 'Page not found'});
         }
-        res.render('driver', {data: driverList});
+        return res.render('driver', {data: driverList});
         // return res.status(200).json({
         //     success: true,
         //     status: 200,
@@ -254,7 +263,7 @@ export const getDriver = async (req, res, next) => {
         if (!driver) {
             return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
         }
-        res.render('taixe', {data: Object.assign(driver, {rating})});
+        return res.render('taixe', {data: Object.assign(driver, {rating})});
         //return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: driver});
     }
     catch (err) {
@@ -418,7 +427,7 @@ export const getVehicleList = async (req,res,next) => {
         // if (vehicleList.length === 0) {
         //     return res.status(404).json({ success: false, status: 404, message: 'Page not found'});
         // }
-        res.render('xe', {data: vehicleList});
+        return res.render('xe', {data: vehicleList});
         // return res.status(200).json({
         //     sucess: true,
         //     status: 200,
@@ -443,7 +452,8 @@ export const getVehicle = async (req,res,next) => {
         if (!vehicle) {
             return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
         }
-        return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: vehicle});
+        return res.render('xe-item', {data: vehicle})
+        //return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: vehicle});
     }
     catch (err) {
         next(err);
@@ -465,9 +475,7 @@ export const updateDriver = async (req,res,next) => {
         }
         if (req.body.numberPlate) {
             const success = await driver.assignVehicle(await models.Vehicle.findOne({numberPlate: req.body.numberPlate}).exec());
-            if (success) {
-                return res.status(200).json({ success: true, status: 200, message: 'Successfully updated'});
-            }
+            return res.redirect('.');
         } else {
             await driver.removeVehicle();
             return res.status(200).json({ success: true, status: 200, message: 'Successfully updated'});
@@ -486,13 +494,13 @@ export const updateVehicle = async (req,res,next) => {
         req.body.[numberPlate, fuelType, employeeID, maintainanceDate] : optional
     */
 
-    listAllowedProperty = ['numberPlate', 'fuelType', 'employeeID', 'maintainanceDate'];
+    const listAllowedProperty = ['numberPlate', 'fuelType', 'employeeID', 'maintainanceDate'];
     reqUtil.filterProperties(listAllowedProperty, req.body);
     reqUtil.removeUndefinedProperties(req.body);
 
     let resObj = {};
-    for (key in req.body) {
-        resObj[key] = 'Failed';
+    for (let key in req.body) {
+        resObj[key] = 'Not updated';
     }
 
     try {
@@ -517,10 +525,6 @@ export const updateVehicle = async (req,res,next) => {
             const driver = await models.Driver.findOne({employeeID: req.body.employeeID}).exec();
             if (driver && await vehicle.assignDriver(driver)) resObj.employeeID = 'Success';
         }
-        else {
-            await vehicle.removeDriver();
-            resObj.employeeID = 'Success';
-        }
         // Maintainance date YYYY-MM-DD
         if (req.body.maintainanceDate) {
             const timeFrom = new Date(Date.parse(req.body.maintainanceDate));
@@ -540,8 +544,8 @@ export const updateVehicle = async (req,res,next) => {
                 resObj.maintainanceDate = 'Success';
             }
         }
-
-        return res.status(200).json({ success: true, status: 200, message: 'Successfully updated', data: resObj});
+        return res.redirect('.');
+        //return res.status(200).json({ success: true, status: 200, message: 'Successfully updated', data: resObj});
     } 
     catch (err) { 
         next(err) 
@@ -627,9 +631,19 @@ export const getOrder = async (req,res,next) => {
         const id = new mongoose.Types.ObjectId(req.params._id);
         const order = await models.Order.findById(id).exec();
         if (!order) {
-            return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+            return res.render('error', {status: 404, message: 'Order not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
         }
-        return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: order});
+
+        const driver = (await models.Driver.findById(order.driver).exec()).name;
+        const vehicle = (await models.Vehicle.findById(order.vehicle).exec()).numberPlate;
+
+        let ord = order.toObject();
+        ord.driver = driver;
+        ord.vehicle = vehicle;
+
+        return res.render('donhangID', {data: ord});
+        // return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: ord});
     } 
     catch (err) {
         next(err);
@@ -686,7 +700,7 @@ export const getDashboard = async (req,res,next) => {
     const totalDriverWithVehicle = await models.Driver.countDocuments({vehicle: { $ne: null }}).exec();
     const [totalFix,vehicleList] = await models.Vehicle.getVehiclesNeedRepair();
     
-    res.render('quanly', {totalUser, totalGrossThisYear, totalDriver, totalVehicle, totalOrderThisYear, totalKmRan, totalDriverWithVehicle, totalFix, vehicleList});
+    return res.render('quanly', {totalUser, totalGrossThisYear, totalDriver, totalVehicle, totalOrderThisYear, totalKmRan, totalDriverWithVehicle, totalFix, vehicleList});
     res.end();
 };
 
@@ -696,4 +710,12 @@ export const getVehicleAdderView = async (req,res,next) => {
 
 export const getDriverAdderView = async (req,res,next) => {
     return res.render('adddr');
+}
+
+export const getDriverUpdateView = async (req,res,next) => {
+    return res.render('updateDriver', {data : req.params._id});
+}
+
+export const getVehicleUpdateView = async (req,res,next) => {
+    return res.render('updateVehicle', {data : req.params._id});
 }

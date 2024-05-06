@@ -116,8 +116,15 @@
                         <img src="/image/qr2.jpg" alt="">
                     </div>
                     <div class="xeItem-content-right-button">
-                        <button class="btn">CHỈNH SỬA <i class='bx bxs-pencil'></i></button>
-                        <button class="btn2">XÓA <i class='bx bxs-trash-alt' ></i></button>
+                        <a href="/admin/vehicles/<%= data._id %>/update" target="_self">
+                            <button class="btn">CHỈNH SỬA <i class='bx bxs-pencil'></i></button>
+                        </a>
+                        
+
+                        <form action="/admin/vehicles/<%= data._id %>/delete" method="POST">
+                            <button type="submit" class="btn2" >XÓA </button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
