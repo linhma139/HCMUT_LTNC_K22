@@ -47,7 +47,8 @@ export const deleteDriver = async (req,res,next) => {
             res.redirect('/admin/drivers');
             //return res.status(200).json({ success: true, status: 200, message: 'Deleted driver account'});;
         }
-        return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+        // return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+        return res.render('error', {status: 404, message: 'Driver not found'});
     }
     catch (err) {
         next(err);
@@ -212,9 +213,6 @@ export const getDriverList = async (req,res,next) => {
             },
         ])
 
-        if (driverList.length === 0) {
-            return res.status(404).json({ success: false, status: 404, message: 'Page not found'});
-        }
         return res.render('driver', {data: driverList});
         // return res.status(200).json({
         //     success: true,
@@ -261,7 +259,8 @@ export const getDriver = async (req, res, next) => {
         ]);
         rating = rating?.[0]?.rating;
         if (!driver) {
-            return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            return res.render('error', {status: 404, message: 'Driver not found'});
         }
         return res.render('taixe', {data: Object.assign(driver, {rating})});
         //return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: driver});
@@ -296,10 +295,6 @@ export const getDriverReviewList = async (req,res,next) => {
         .limit(limit)
         .exec();
 
-        if (reviews.length == 0) {
-            return res.status(404).json({ success: false, status: 404, message: 'Page not found'});
-        }
-
         return res.status(200).json({
             success: true,
             status: 200,
@@ -327,14 +322,17 @@ export const getDriverScheduleList = async (req,res,next) => {
     try {
         const driver = await models.Driver.findById(new mongoose.Types.ObjectId(req.params._id)).exec();
         if (!driver) {
-            return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            return res.render('error', {status: 404, message: 'Driver not found'});
         }
         if (!driver.vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
         const vehicle = await models.Vehicle.findById(driver.vehicle).exec();
         if (!vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
         
         const timeFrom = new Date(Date.parse(req.body.timeFrom));
@@ -342,7 +340,8 @@ export const getDriverScheduleList = async (req,res,next) => {
         const scheduleList = (await vehicle.getScheduleList(timeFrom, timeTo)).slice((page-1)*limit, page*limit);
 
         if (scheduleList.length == 0) {
-            return res.status(404).json({ success: false, status: 404, message: 'No schedule found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'No schedule found'});
+            return res.render('error', {status: 404, message: 'No schedule found'});
         }
 
         return res.status(200).json({ 
@@ -450,7 +449,8 @@ export const getVehicle = async (req,res,next) => {
         const id = new mongoose.Types.ObjectId(req.params._id);
         const vehicle = await models.Vehicle.findById(id).exec();
         if (!vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
         return res.render('xe-item', {data: vehicle})
         //return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: vehicle});
@@ -471,14 +471,16 @@ export const updateDriver = async (req,res,next) => {
         const id = new mongoose.Types.ObjectId(req.params._id);
         const driver = await models.Driver.findById(id).exec();
         if (!driver) {
-            return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            return res.render('error', {status: 404, message: 'Driver not found'});
         }
         if (req.body.numberPlate) {
             const success = await driver.assignVehicle(await models.Vehicle.findOne({numberPlate: req.body.numberPlate}).exec());
             return res.redirect('.');
         } else {
             await driver.removeVehicle();
-            return res.status(200).json({ success: true, status: 200, message: 'Successfully updated'});
+            // return res.status(200).json({ success: true, status: 200, message: 'Successfully updated'});
+            return res.redirect('.');
         }
         return res.status(400).json({ success: false, status: 400, message: 'Vehicle doesn\'t exist'});
     }
@@ -507,7 +509,8 @@ export const updateVehicle = async (req,res,next) => {
         const id = new mongoose.Types.ObjectId(req.params._id);
         const vehicle = await models.Vehicle.findById(id).exec();
         if (!vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
 
         // Number plate
@@ -624,7 +627,8 @@ export const getOrderList = async (req,res,next) => {
 
 export const getOrder = async (req,res,next) => {
     if (!req.params._id) {
-        return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+        // return res.status(404).json({ success: false, status: 404, message: 'Order not found'});
+        return res.render('error', {status: 404, message: 'Order not found'});
     }
     
     try {

@@ -7,13 +7,15 @@ export const isAdmin = async (req, res, next) =>
 {
     if (req.session.accountType !== 'Admin')
     {
-        return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+        // return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+        return res.render('error', {status: 401, message: 'Unauthorized'});
     }
     else {
         const userid = req.session.user;
         const admin = await Account.findById(userid, 'accountType').exec();
         if (!admin || admin.accountType !== 'Admin') {
-            return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+            // return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+            return res.render('error', {status: 401, message: 'Unauthorized'});
         }
         next();
     }
@@ -22,13 +24,15 @@ export const isAdmin = async (req, res, next) =>
 export const isDriver = async (req,res,next) => {
     if (req.session.accountType !== 'Driver')
     {
-        return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+        // return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+        return res.render('error', {status: 401, message: 'Unauthorized'});
     }
     else {
         const userid = req.session.user;
         const driver = await Account.findById(userid, 'accountType').exec();
         if (!driver || driver.accountType !== 'Driver') {
-            return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+            // return res.status(401).json({ success: false, status: 401, message: 'Unauthorized' });
+            return res.render('error', {status: 401, message: 'Unauthorized'});
         }
         next();
     }

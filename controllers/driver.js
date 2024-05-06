@@ -10,16 +10,20 @@ export const getVehicle = async (req,res,next) => {
     try {
         const driver = await models.Driver.findById(new mongoose.Types.ObjectId(req.session.profile)).exec();
         if (!driver) {
-            return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Driver not found'});
+            return res.render('error', {status: 404, message: 'Driver not found'});
         }
         if (!driver.vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
         const vehicle = await models.Vehicle.findById(driver.vehicle).exec();
         if (!vehicle) {
-            return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            // return res.status(404).json({ success: false, status: 404, message: 'Vehicle not found'});
+            return res.render('error', {status: 404, message: 'Vehicle not found'});
         }
         return res.status(200).json({ success: true, status: 200, message: 'Successfully retrieved', data: vehicle});
+        
     } catch (err) {
         next(err);
     }
