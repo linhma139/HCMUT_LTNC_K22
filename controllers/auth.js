@@ -36,9 +36,8 @@ export const loginView = (req,res,next) => {
 };
 
 export const logoutView = (req,res,next) => {
-    // if (req.session.user) {
-    //     return res.status(400).json({ success: false, status: 400, message: 'Already logged in'});
-    // }
+   
+    
     return res.render("logout")
     /* render view here */
 };

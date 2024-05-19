@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/giaohang.css" />
 
     <!-- The website JavaScript file -->
-    <script src="/js/pages/giaohang.js" defer></script>
+    <script type="module" src="/js/pages/giaohang.js" defer></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -77,7 +77,7 @@
                             <div class="donhang-content-right-input-bottom">
                                 <div class="select-cont">
                                     <label for="sl1">Loại xe<span style="color: red;">*</span></label><br>
-                                    <select name='lang' onchange="changeColor(this)" id="sl1">
+                                    <select name='lang' onchange="changeColor(this)" id="sl1" >
                                         <option value="#000">None</option>
                                         <option value="#F02F78">Xe con 1 chỗ</option>
                                         <option value="#F02F77">Xe con 2 chỗ</option>
@@ -101,24 +101,24 @@
                            <div class="donhang-content-left-input-top row">
                                     <div class="donhang-content-left-input-top-item">
                                         <label for="Hovaten">Thời gian đi <span style="color: red;">*</span></label>
-                                        <input type="text">
+                                        <input type="text" id="fromtime_input">
                                     </div>
                                     <div class="donhang-content-left-input-top-item">
                                         <label for="">Tỉnh/Thành Phố <span style="color: red;">*</span></label>
-                                        <input type="text">
+                                        <input type="text" id="fromcity_input">
                                     </div>
                                     <div class="donhang-content-left-input-top-item">
                                         <label for="">Quận/Huyện<span style="color: red;">*</span></label>
-                                        <input type="text">
+                                        <input type="text" id="fromprovince_input">
                                     </div>
                            </div>
                            <div class="donhang-content-left-input-bottom">
                                     <label for="">Phường/Xã<span style="color: red;">*</span></label>
-                                    <input type="text">
+                                    <input type="text" id="fromvillage_input">
                            </div>
                            <div class="donhang-content-left-input-bottom">
                                 <label for="">Địa chỉ<span style="color: red;">*</span></label>
-                                <input type="text">
+                                <input type="text" id="fromaddress_input">
                             </div>
                            <div class="donhang-content-left-button row">
                                 <a href="">Quay lại</a>
@@ -129,23 +129,23 @@
                            <div class="donhang-content-right-input-top row">
                                     <div class="donhang-content-right-input-top-item">
                                         <label for="">Tỉnh/Thành Phố <span style="color: red;">*</span></label>
-                                        <input type="text">
+                                        <input type="text" id="tocity_input">
                                     </div>
                                     <div class="donhang-content-right-input-top-item">
                                         <label for="">Quận/Huyện<span style="color: red;">*</span></label>
-                                        <input type="text">
+                                        <input type="text" id="toprovince_input">
                                     </div>
                            </div>
                            <div class="donhang-content-right-input-bottom">
                                     <label for="">Phường/Xã<span style="color: red;">*</span></label>
-                                    <input type="text">
+                                    <input type="text" id="tovillage_input">
                            </div>
                            <div class="donhang-content-right-input-bottom">
                                 <label for="">Địa chỉ<span style="color: red;">*</span></label>
-                                <input type="text">
+                                <input type="text" id="toaddress_input">
                             </div>
                            <div class="donhang-content-right-button row">
-                                <button><p>ĐẶT ĐƠN</p></button>
+                                <button id="order_submit"><p>ĐẶT ĐƠN</p></button>
                             </div>
                     </div>
                     
